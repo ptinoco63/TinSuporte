@@ -191,7 +191,7 @@ A pasta de configuração, pipe IPC e logs passam a ser `TinSuporte`:
 ```
 .
 ├── NOTICE              Atribuição legal (RustDesk + motor IA)
-├── LICENCE             AGPL-3.0
+├── LICENSE             AGPL-3.0
 ├── README.md           Este ficheiro
 ├── README.rustdesk.md  README original do upstream
 ├── build.py            Build oficial do RustDesk
