@@ -1,0 +1,74 @@
+TinSuporte
+Copyright (C) 2026 TinLabs
+
+This product ("TinSuporte") is a modified build of RustDesk.
+
+===============================================================================
+1. RustDesk (upstream code base)
+===============================================================================
+Copyright (C) Purslane Tech Pte. Ltd. and the RustDesk contributors.
+https://github.com/rustdesk/rustdesk
+
+Licensed under the GNU Affero General Public License v3.0 (AGPL-3.0).
+See the LICENCE file in this repository for the full licence text.
+
+TinSuporte is a derivative work of RustDesk and is therefore distributed
+under the same licence (AGPL-3.0). The complete corresponding source code
+for this product is published in this repository.
+
+Modifications made by TinLabs relative to RustDesk v1.5.0 are, at minimum:
+  * Application name / identifier rebranded from "RustDesk" to "TinSuporte"
+    (libs/hbb_common/src/config.rs, APP_NAME) and the Windows binary name
+    (flutter/windows/CMakeLists.txt, BINARY_NAME).
+  * Application icon replaced (flutter/windows/runner/resources/app_icon.ico)
+    and Flutter runtime assets added (flutter/assets/icon.png,
+    flutter/assets/logo_dark.png; see the .gitignore exception for
+    flutter/assets/**).
+  * Windows version-resource metadata (company, product, copyright)
+    (flutter/windows/runner/Runner.rc).
+  * About-page attribution text
+    (flutter/lib/desktop/pages/desktop_setting_page.dart).
+  * Tab-bar window title now resolves through bind.mainGetAppNameSync()
+    instead of a hard-coded "RustDesk" (flutter/lib/desktop/widgets/
+    tabbar_widget.dart).
+  * The default rendezvous server and default server public key were changed
+    from rs-ny.rustdesk.com to the self-hosted instance tinsuporte.ddns.net
+    (libs/hbb_common/src/config.rs, RENDEZVOUS_SERVERS / RS_PUB_KEY).
+  * User-facing links (privacy, pricing, download, documentation) were pointed
+    to https://tinlabs.pt.
+  * Every translatable string containing "RustDesk" is now rewritten to the
+    application name at load time (src/lang.rs).
+  * TOTP issuer renamed to "TinSuporte" (src/auth_2fa.rs).
+
+===============================================================================
+2. AI engine / build co-author
+===============================================================================
+A significant portion of this software, including the branding changes, the
+build tooling and the deployment configuration, was written and debugged with
+the assistance of an AI engine:
+
+  Name        : Zé
+  Role        : AI engine and build co-author
+  Runtime     : opencode
+  Model ID    : opencode/mimo-v2.6-flash-free
+
+The AI engine wrote code and configuration text that is included in this
+repository, and must be treated as part of the Corresponding Source under the
+AGPL-3.0. The humans responsible for this distribution are TinLabs
+(TinLabs / TinSuporte).
+
+===============================================================================
+3. Third-party components
+===============================================================================
+TinSuporte links against third-party libraries that retain their own licences,
+including but not limited to FFmpeg, libvpx, libyuv, libaom, Opus, and the
+Flutter framework. See flutter/pubspec.yaml, Cargo.toml, vcpkg.json and the
+respective upstream repositories for details.
+
+===============================================================================
+4. No affiliation
+===============================================================================
+TinSuporte is not affiliated with, endorsed by, or sponsored by Purslane Tech
+Pte. Ltd., the RustDesk project, or the authors of any third-party component
+listed above. "RustDesk" is a trademark of its respective owners and is used
+here only to identify the upstream project from which this software derives.

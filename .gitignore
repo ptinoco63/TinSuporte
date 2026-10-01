@@ -17,6 +17,8 @@ cert.pfx
 *png
 *svg
 *jpg
+# runtime assets of the app must be versioned (overrides the rules above)
+!flutter/assets/**
 sciter.dll
 **pdb
 src/bridge_generated.rs

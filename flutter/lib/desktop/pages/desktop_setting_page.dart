@@ -2554,7 +2554,7 @@ class _AboutState extends State<_About> {
                       .marginSymmetric(vertical: 4.0)),
               InkWell(
                   onTap: () {
-                    launchUrlString('https://rustdesk.com/privacy.html');
+                    launchUrlString('https://tinlabs.pt');
                   },
                   child: Text(
                     translate('Privacy Statement'),
@@ -2562,7 +2562,7 @@ class _AboutState extends State<_About> {
                   ).marginSymmetric(vertical: 4.0)),
               InkWell(
                   onTap: () {
-                    launchUrlString('https://rustdesk.com');
+                            launchUrlString('https://tinlabs.pt');
                   },
                   child: Text(
                     translate('Website'),
@@ -2580,7 +2580,10 @@ class _AboutState extends State<_About> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Copyright © ${DateTime.now().toString().substring(0, 4)} Purslane Tech Pte. Ltd.\n$license',
+                            'TinSuporte — Copyright © ${DateTime.now().toString().substring(0, 4)} TinLabs.\n'
+                            'Built on RustDesk (AGPL-3.0), © Purslane Tech Pte. Ltd. and the RustDesk contributors.\n'
+                            'AI engine and build co-author: Zé, an AI assistant by opencode (model mimo-v2.6-flash-free).\n'
+                            '$license',
                             style: const TextStyle(color: Colors.white),
                           ),
                           Text(

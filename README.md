@@ -1,182 +1,213 @@
-<p align="center">
-  <img src="res/logo-header.svg" alt="RustDesk - Your remote desktop"><br>
-  <a href="#raw-steps-to-build">Build</a> •
-  <a href="#how-to-build-with-docker">Docker</a> •
-  <a href="#file-structure">Structure</a> •
-  <a href="#screenshots">Screenshots</a><br>
-  [<a href="docs/README-UA.md">Українська</a>] | [<a href="docs/README-CS.md">česky</a>] | [<a href="docs/README-ZH.md">中文</a>] | [<a href="docs/README-HU.md">Magyar</a>] | [<a href="docs/README-ES.md">Español</a>] | [<a href="docs/README-FA.md">فارسی</a>] | [<a href="docs/README-FR.md">Français</a>] | [<a href="docs/README-DE.md">Deutsch</a>] | [<a href="docs/README-PL.md">Polski</a>] | [<a href="docs/README-ID.md">Indonesian</a>] | [<a href="docs/README-FI.md">Suomi</a>] | [<a href="docs/README-ML.md">മലയാളം</a>] | [<a href="docs/README-JP.md">日本語</a>] | [<a href="docs/README-NL.md">Nederlands</a>] | [<a href="docs/README-IT.md">Italiano</a>] | [<a href="docs/README-RU.md">Русский</a>] | [<a href="docs/README-PTBR.md">Português (Brasil)</a>] | [<a href="docs/README-EO.md">Esperanto</a>] | [<a href="docs/README-KR.md">한국어</a>] | [<a href="docs/README-AR.md">العربي</a>] | [<a href="docs/README-VN.md">Tiếng Việt</a>] | [<a href="docs/README-DA.md">Dansk</a>] | [<a href="docs/README-GR.md">Ελληνικά</a>] | [<a href="docs/README-TR.md">Türkçe</a>] | [<a href="docs/README-NO.md">Norsk</a>] | [<a href="docs/README-RO.md">Română</a>]<br>
-  <b>We need your help to translate this README, <a href="https://github.com/rustdesk/rustdesk/tree/master/src/lang">RustDesk UI</a> and <a href="https://github.com/rustdesk/doc.rustdesk.com">RustDesk Doc</a> to your native language</b>
-</p>
+# TinSuporte
 
-> [!Caution]
-> **Misuse Disclaimer:** <br>
-> The developers of RustDesk do not condone or support any unethical or illegal use of this software. Misuse, such as unauthorized access, control or invasion of privacy, is strictly against our guidelines. The authors are not responsible for any misuse of the application.
+Software de acesso remoto para Windows, self-hosted, com sincronização de
+clipboard. Construído a partir do **RustDesk** e re-brandado para a TinLabs /
+TinSuporte.
 
+> **Licença: AGPL-3.0.** Este é um trabalho derivado do RustDesk.
+> Atribuição completa em [`NOTICE`](NOTICE). O código-fonte completo que
+> corresponde aos binários distribuídos é este repositório.
 
-Chat with us: [Discord](https://discord.gg/nDceKgxnkV) | [Twitter](https://twitter.com/rustdesk) | [Reddit](https://www.reddit.com/r/rustdesk) | [YouTube](https://www.youtube.com/@rustdesk)
+---
 
-[![RustDesk Server Pro](https://img.shields.io/badge/RustDesk%20Server%20Pro-Advanced%20Features-blue)](https://rustdesk.com/pricing.html)
+## Atribuição
 
-Yet another remote desktop solution, written in Rust. Works out of the box with no configuration required. You have full control of your data, with no concerns about security. You can use our rendezvous/relay server, [set up your own](https://rustdesk.com/server), or [write your own rendezvous/relay server](https://github.com/rustdesk/rustdesk-server-demo).
+| Papel | Quem |
+|---|---|
+| Código base | [RustDesk](https://github.com/rustdesk/rustdesk) (AGPL-3.0), © Purslane Tech Pte. Ltd. e contribuidores |
+| Re-branding, tooling, deploy | TinLabs / **TinSuporte** |
+| Motor IA e co-autoria de build | **Zé** — motor de IA do [opencode](https://opencode.ai), modelo `opencode/mimo-v2.6-flash-free` |
 
-![image](https://user-images.githubusercontent.com/71636191/171661982-430285f0-2e12-4b1d-9957-4a58e375304d.png)
+A motoria de IA escreveu parte do código e das configurações incluídas neste
+repositório; essa parte faz parte da Corresponding Source sob a AGPL-3.0.
 
-RustDesk welcomes contribution from everyone. See [CONTRIBUTING.md](docs/CONTRIBUTING.md) for help getting started.
+Não somos afiliados, endossados ou patrocinados pelo projeto RustDesk ou pela
+Purslane Tech Pte. Ltd.
 
-[**FAQ**](https://github.com/rustdesk/rustdesk/wiki/FAQ)
+---
 
-[**BINARY DOWNLOAD**](https://github.com/rustdesk/rustdesk/releases)
+## Estado
 
-[**NIGHTLY BUILD**](https://github.com/rustdesk/rustdesk/releases/tag/nightly)
+Funcional e verificado em Windows 11 x64:
 
-[<img src="https://f-droid.org/badge/get-it-on.png"
-    alt="Get it on F-Droid"
-    height="80">](https://f-droid.org/en/packages/com.carriez.flutter_hbb)
-[<img src="https://flathub.org/api/badge?svg&locale=en"
-    alt="Get it on Flathub"
-    height="80">](https://flathub.org/apps/com.rustdesk.RustDesk)
+- [x] Cliente Windows compilado (`TinSuporte.exe`)
+- [x] Re-branding total (nome, ícone, metadados do .exe, página About, links)
+- [x] Servidor `hbbs` + `hbbr` em Docker
+- [x] Chave de sessão gerada
+- [x] Cliente configurado para `tinsuporte.ddns.net`
+- [x] Codec de vídeo por hardware (NVENC H.264/HEVC detetado)
+- [x] Port forwarding no router (21115/21116 TCP+UDP, 21117 TCP)
+- [x] Teste de ligação ao servidor (estado "Pronto", ID `91 971 646`)
+- [ ] Teste end-to-end entre duas máquinas
 
-## Dependencies
+---
 
-Desktop versions use Flutter or Sciter (deprecated) for GUI. This tutorial is for Sciter only, since it is easier and more friendly to start. Check out our [CI](https://github.com/rustdesk/rustdesk/blob/master/.github/workflows/flutter-build.yml) for building the Flutter version.
+## Build do cliente (Windows x64)
 
-Please download Sciter dynamic library yourself.
+### Pré-requisitos
 
-[Windows](https://raw.githubusercontent.com/c-smile/sciter-sdk/master/bin.win/x64/sciter.dll) |
-[Linux](https://raw.githubusercontent.com/c-smile/sciter-sdk/master/bin.lnx/x64/libsciter-gtk.so) |
-[macOS](https://raw.githubusercontent.com/c-smile/sciter-sdk/master/bin.osx/libsciter.dylib)
+| Ferramenta | Versão |
+|---|---|
+| Visual Studio Build Tools 2022 | MSVC 14.44 + Windows SDK |
+| Rust | 1.98.1 (target `x86_64-pc-windows-msvc`) |
+| Python | 3.12+ |
+| Flutter | **3.24.5** (obrigatório: `pubspec.lock` exige `>=3.24.0`) |
+| Git | 2.x |
+| vcpkg | com `VCPKG_ROOT` definido |
+| LLVM/Clang | para `libclang.dll` (bindgen, usado pelo `hwcodec`) |
+| Docker Desktop | para o servidor |
 
-## Raw Steps to build
+### Passos
 
-- Prepare your Rust development env and C++ build env
+```powershell
+# 1. Clonar (inclui submódulo hbb_common)
+git clone --recursive https://github.com/<tu>/tinsuporte.git
+cd tinsuporte
 
-- Install [vcpkg](https://github.com/microsoft/vcpkg), and set `VCPKG_ROOT` env variable correctly
+# 2. Gerar a ponte flutter_rust_bridge (ficheiros ignorados pelo git)
+cargo install flutter_rust_bridge_codegen --version 1.80.1 --features uuid --locked
+cargo install cargo-expand --version 1.0.95 --locked
+cd flutter && flutter pub get && cd ..
+flutter_rust_bridge_codegen `
+    --rust-input ./src/flutter_ffi.rs `
+    --dart-output ./flutter/lib/generated_bridge.dart `
+    --c-output ./flutter/macos/Runner/bridge_generated.h
 
-  - Windows: vcpkg install libvpx:x64-windows-static libyuv:x64-windows-static opus:x64-windows-static aom:x64-windows-static
-  - Linux/macOS: vcpkg install libvpx libyuv opus aom
+# 3. Bibliotecas C via vcpkg (ffmpeg, libvpx, libyuv, opus, aom)
+#    O vcpkg.json na raiz declara o baseline e as ports necessárias.
 
-- run `cargo run`
-
-## [Build](https://rustdesk.com/docs/en/dev/build/)
-
-## How to Build on Linux
-
-### Ubuntu 18 (Debian 10)
-
-```sh
-sudo apt install -y zip g++ gcc git curl wget nasm yasm libgtk-3-dev clang libxcb-randr0-dev libxdo-dev \
-        libxfixes-dev libxcb-shape0-dev libxcb-xfixes0-dev libasound2-dev libpulse-dev cmake make \
-        libclang-dev ninja-build libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev
+# 4. Compilar
+python build.py --portable --flutter --skip-portable-pack --hwcodec --vram
 ```
 
-### openSUSE Tumbleweed
+O executável fica em:
 
-```sh
-sudo zypper install gcc-c++ git curl wget nasm yasm gcc gtk3-devel clang libxcb-devel libXfixes-devel cmake alsa-lib-devel gstreamer-devel gstreamer-plugins-base-devel xdotool-devel
+```
+flutter\build\windows\x64\runner\Release\tinsuporte.exe
 ```
 
-### Fedora 28 (CentOS 8)
+Ou usa o script directo (vcvars64 + PATH + etapas separadas com detecção de
+erro): [`build-tinsuporte.bat`](#).
 
-```sh
-sudo yum -y install gcc-c++ git curl wget nasm yasm gcc gtk3-devel clang libxcb-devel libxdo-devel libXfixes-devel pulseaudio-libs-devel cmake alsa-lib-devel gstreamer1-devel gstreamer1-plugins-base-devel
-```
+> **Nota:** não chames `flutter.bat` dentro de um `.bat` sem `call` — o
+> controlo é transferido e o script morre. Usa sempre `call flutter`.
 
-### Arch (Manjaro)
+---
 
-```sh
-sudo pacman -Syu --needed unzip git cmake gcc curl wget yasm nasm zip make pkg-config clang gtk3 xdotool libxcb libxfixes alsa-lib pipewire
-```
+## Servidor self-hosted
 
-### Install vcpkg
-
-```sh
-git clone https://github.com/microsoft/vcpkg
-cd vcpkg
-git checkout 2023.04.15
-cd ..
-vcpkg/bootstrap-vcpkg.sh
-export VCPKG_ROOT=$HOME/vcpkg
-vcpkg/vcpkg install libvpx libyuv opus aom
-```
-
-### Fix libvpx (For Fedora)
-
-```sh
-cd vcpkg/buildtrees/libvpx/src
-cd *
-./configure
-sed -i 's/CFLAGS+=-I/CFLAGS+=-fPIC -I/g' Makefile
-sed -i 's/CXXFLAGS+=-I/CXXFLAGS+=-fPIC -I/g' Makefile
-make
-cp libvpx.a $HOME/vcpkg/installed/x64-linux/lib/
-cd
-```
-
-### Build
-
-```sh
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-source $HOME/.cargo/env
-git clone --recurse-submodules https://github.com/rustdesk/rustdesk
+```powershell
 cd rustdesk
-mkdir -p target/debug
-wget https://raw.githubusercontent.com/c-smile/sciter-sdk/master/bin.lnx/x64/libsciter-gtk.so
-mv libsciter-gtk.so target/debug
-VCPKG_ROOT=$HOME/vcpkg cargo run
+docker compose up -d
+docker logs tinsuporte-hbbs
 ```
 
-## How to build with Docker
+O `hbbs` gera automaticamente `data/id_ed25519` e `data/id_ed25519.pub` no
+primeiro arranque. A **chave pública** aparece no log:
 
-Begin by cloning the repository and building the Docker container:
-
-```sh
-git clone https://github.com/rustdesk/rustdesk
-cd rustdesk
-git submodule update --init --recursive
-docker build -t "rustdesk-builder" .
+```
+INFO [...] Key: <SUA_CHAVE_AQUI>
 ```
 
-Then, each time you need to build the application, run the following command:
+### Portas
 
-```sh
-docker run --rm -it -v $PWD:/home/user/rustdesk -v rustdesk-git-cache:/home/user/.cargo/git -v rustdesk-registry-cache:/home/user/.cargo/registry -e PUID="$(id -u)" -e PGID="$(id -g)" rustdesk-builder
+| Porta | Proto | Serviço | Obrigatório |
+|---|---|---|---|
+| 21115 | TCP | Teste NAT (`hbbs`) | sim |
+| 21116 | TCP **e** UDP | Rendezvous (`hbbs`) | **sim** |
+| 21117 | TCP | Relay (`hbbr`) | **sim** |
+| 21118 | TCP | WebSocket `hbbs` | não |
+| 21119 | TCP | WebSocket `hbbr` | não |
+
+> **UDP 21116 é obrigatório.** Sem ele o rendezvous não funciona mesmo que o
+> TCP responda.
+
+### Port forwarding no router
+
+Encaminhar para o IP LAN da máquina que corre o Docker (por exemplo
+`192.168.1.211`):
+
+```
+21115/tcp -> <IP-LAN>
+21116/tcp -> <IP-LAN>
+21116/udp -> <IP-LAN>
+21117/tcp -> <IP-LAN>
 ```
 
-Note that the first build may take longer before dependencies are cached, subsequent builds will be faster. Additionally, if you need to specify different arguments to the build command, you may do so at the end of the command in the `<OPTIONAL-ARGS>` position. For instance, if you wanted to build an optimized release version, you would run the command above followed by `--release`. The resulting executable will be available in the target folder on your system, and can be run with:
+Verificar de fora (não da própria LAN, senão o NAT loopback pode dar falso
+negativo):
 
-```sh
-target/debug/rustdesk
+```powershell
+# deve dar True a partir de outra rede
+Test-NetConnection tinsuporte.ddns.net -Port 21116
 ```
 
-Or, if you're running a release executable:
+Ou por serviço externo:
 
-```sh
-target/release/rustdesk
+```
+https://check-host.net/check-tcp?host=tinsuporte.ddns.net:21116
 ```
 
-Please ensure that you run these commands from the root of the RustDesk repository, or the application may not find the required resources. Also note that other cargo subcommands such as `install` or `run` are not currently supported via this method as they would install or run the program inside the container instead of the host.
+---
 
-## File Structure
+## Configuração do cliente
 
-- **[libs/hbb_common](https://github.com/rustdesk/rustdesk/tree/master/libs/hbb_common)**: video codec, config, tcp/udp wrapper, and some other utility functions shared with the server
-- **[libs/base](https://github.com/rustdesk/rustdesk/tree/master/libs/base)**: protobuf, fs functions for file transfer, keyboard and platform code used only by this app
-- **[libs/scrap](https://github.com/rustdesk/rustdesk/tree/master/libs/scrap)**: screen capture
-- **[libs/enigo](https://github.com/rustdesk/rustdesk/tree/master/libs/enigo)**: platform specific keyboard/mouse control
-- **[libs/clipboard](https://github.com/rustdesk/rustdesk/tree/master/libs/clipboard)**: file copy and paste implementation for Windows, Linux, macOS.
-- **[src/ui](https://github.com/rustdesk/rustdesk/tree/master/src/ui)**: obsolete Sciter UI (deprecated)
-- **[src/server](https://github.com/rustdesk/rustdesk/tree/master/src/server)**: audio/clipboard/input/video services, and network connections
-- **[src/client.rs](https://github.com/rustdesk/rustdesk/tree/master/src/client.rs)**: start a peer connection
-- **[src/rendezvous_mediator.rs](https://github.com/rustdesk/rustdesk/tree/master/src/rendezvous_mediator.rs)**: Communicate with [rustdesk-server](https://github.com/rustdesk/rustdesk-server), wait for remote direct (TCP hole punching) or relayed connection
-- **[src/platform](https://github.com/rustdesk/rustdesk/tree/master/src/platform)**: platform specific code
-- **[flutter](https://github.com/rustdesk/rustdesk/tree/master/flutter)**: Flutter code for desktop and mobile
+As opções gravam-se em **`%APPDATA%\TinSuporte\config\TinSuporte2.toml`**
+(não em `TinSuporte.toml` — `Config::get_options()` lê do `CONFIG2`):
 
-## Screenshots
+```toml
+rendezvous_server = 'tinsuporte.ddns.net'
 
-![Connection Manager](https://github.com/rustdesk/rustdesk/assets/28412477/db82d4e7-c4bc-4823-8e6f-6af7eadf7651)
+[options]
+custom-rendezvous-server = 'tinsuporte.ddns.net'
+relay-server = 'tinsuporte.ddns.net'
+key = '<chave-pública-do-hbbs>'
+```
 
-![Connected to a Windows PC](https://github.com/rustdesk/rustdesk/assets/28412477/9baa91e9-3362-4d06-aa1a-7518edcbd7ea)
+As quatro opções que a UI grava são:
+`custom-rendezvous-server`, `relay-server`, `api-server`, `key`.
 
-![File Transfer](https://github.com/rustdesk/rustdesk/assets/28412477/39511ad3-aa9a-4f8c-8947-1cce286a46ad)
+Isto é equivalente a preencher *Network → ID Server / Relay Server / Key* na
+interface do TinSuporte.
 
-![TCP Tunneling](https://github.com/rustdesk/rustdesk/assets/28412477/78e8708f-e87e-4570-8373-1360033ea6c5)
+---
 
+## Re-branding aplicado
+
+| Onde | O quê |
+|---|---|
+| `libs/hbb_common/src/config.rs` | `APP_NAME = "TinSuporte"` — propaga o nome a todas as strings via `is_rustdesk()` |
+| `flutter/windows/runner/Runner.rc` | CompanyName, ProductName, FileDescription, Copyright (com atribuição AI) |
+| `flutter/windows/runner/resources/app_icon.ico` | Ícone próprio, 6 tamanhos (256→16) |
+| `flutter/lib/desktop/pages/desktop_setting_page.dart` | Bloco About com as 4 linhas de atribuição |
+
+A pasta de configuração, pipe IPC e logs passam a ser `TinSuporte`:
+`%APPDATA%\TinSuporte\`, `\\.\pipe\TinSuporte\query`, `tinsuporte_rCURRENT.log`.
+
+---
+
+## Estrutura
+
+```
+.
+├── NOTICE              Atribuição legal (RustDesk + motor IA)
+├── LICENCE             AGPL-3.0
+├── README.md           Este ficheiro
+├── README.rustdesk.md  README original do upstream
+├── build.py            Build oficial do RustDesk
+├── src/                Código Rust (inclui bridge_generated.rs, gerado)
+├── libs/hbb_common     Submódulo (APP_NAME)
+├── flutter/            UI Flutter
+├── res/vcpkg*          Overlay de ports/triplets do vcpkg
+└── docker-compose.yml  Servidor hbbs + hbbr
+```
+
+---
+
+## Segurança
+
+- Use sempre a chave pública do teu próprio `hbbs`. Nunca comeces uma sessão
+  com o servidor de outrem.
+- Defina palavra-passe / PIN na app antes de expor o serviço à Internet.
+- O serviço está exposto em todas as interfaces; restringe no firewall à
+  WAN se possível.
